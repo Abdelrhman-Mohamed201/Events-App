@@ -1,4 +1,4 @@
-# events-app
+# Events-App
 
 > A Vue.js project
 
