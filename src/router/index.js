@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import Home from '@/components/Home'
+import Events from '@/components/Events/Events'
+import CreateEvent from '@/components/Events/CreateEvent'
+import Profile from '@/components/user/Profile'
+import Signin from '@/components/user/Signin'
+import Signup from '@/components/user/Signup'
 
 Vue.use(Router)
 
@@ -8,8 +13,34 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Home',
+      component: Home
+    },
+    {
+      path: '/events',
+      name: 'Events',
+      component: Events
+    },
+    {
+      path: '/events/new',
+      name: 'CreateEvent',
+      component: CreateEvent
+    },
+    {
+      path: '/profile',
+      name: 'Profile',
+      component: Profile
+    },
+    {
+      path: '/signin',
+      name: 'Signin',
+      component: Signin
+    },
+    {
+      path: '/signup',
+      name: 'Signup',
+      component: Signup
     }
-  ]
+  ],
+  mode: 'history'
 })
