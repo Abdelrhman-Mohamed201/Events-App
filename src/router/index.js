@@ -30,6 +30,7 @@ export default new Router({
     {
       path: '/events/:id',
       name: 'Event',
+      props: true,
       component: Event
     },
     {

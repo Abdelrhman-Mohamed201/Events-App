@@ -21,7 +21,7 @@
         <v-carousel>
           <v-carousel-item
             v-for="item in events"
-            :src="item.src"
+            :src="item.imgUrl"
             :key="item.id"
             style="cursor: pointer"
             @click="showEvent(item.id)">
@@ -40,25 +40,9 @@
 
 <script>
   export default {
-    data () {
-      return {
-        events: [
-          {
-            src: 'https://scontent.faly1-1.fna.fbcdn.net/v/t1.0-9/21105928_905768726258173_7881901537592093120_n.jpg?oh=e18fe13e30d59d47977cc919241d2c31&oe=5B251F08',
-            id: '123',
-            title: 'Techne Summit'
-          },
-          {
-            src: 'https://blog.instabug.com/wp-content/uploads/2017/04/instabug-hack-week.jpg',
-            id: '456',
-            title: 'Hack Week'
-          },
-          {
-            src: 'http://siliconcanals.nl/wp-content/uploads/2017/01/16142367_1049961291816934_4175770859061645062_n.jpg',
-            id: '789',
-            title: 'Web Summit'
-          }
-        ]
+    computed: {
+      events () {
+        return this.$store.getters.featureEvents
       }
     },
     methods: {
