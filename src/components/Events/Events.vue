@@ -15,7 +15,7 @@
                 <v-card-title>
                   <div>
                     <div class="headline primary--text">{{ item.title }}</div>
-                    <div class="subheading">{{ item.date }}</div>
+                    <div class="subheading">{{ item.date | date }}</div>
                   </div>
                 </v-card-title>
                 <v-card-text>

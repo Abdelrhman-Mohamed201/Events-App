@@ -10,7 +10,7 @@
           <v-card-title>
               <div class="headline primary--text">{{ event.title }}
                 <span class="caption primary--text">{{ event.location }}</span>
-                <span class="caption grey--text">{{ event.date }}</span>
+                <span class="caption grey--text">{{ event.date | date}}</span>
               </div>
           </v-card-title>
           <v-card-text class="pt-0">

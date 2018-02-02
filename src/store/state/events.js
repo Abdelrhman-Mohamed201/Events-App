@@ -6,7 +6,7 @@ export default {
       title: 'Techne Summit',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta magnam, repudiandae.',
       location: 'Egypt, Alex',
-      date: '2018-1-2'
+      date: new Date()
     },
     {
       imgUrl: 'https://blog.instabug.com/wp-content/uploads/2017/04/instabug-hack-week.jpg',
@@ -14,7 +14,7 @@ export default {
       title: 'Hack Week',
       location: 'Egypt, Cairo',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta magnam, repudiandae. Dignissimos doloremque earum error in ipsa ipsum minus perferendis quae rerum.',
-      date: '2018-1-3'
+      date: new Date()
     },
     {
       imgUrl: 'http://siliconcanals.nl/wp-content/uploads/2017/01/16142367_1049961291816934_4175770859061645062_n.jpg',
@@ -22,7 +22,7 @@ export default {
       title: 'Web Summit',
       description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta magnam, repudiandae. Dignissimos doloremque earum error in ipsa ipsum minus perferendis quae rerum. Aspernatur error modi natus odit pariatur qui quos.',
       location: 'USA, CA',
-      date: '2018-1-1'
+      date: new Date()
     }
   ]
 }
