@@ -102,7 +102,8 @@
                   <v-flex xs12 md6 lg6 offset-lg2 class="text-sm-left text-xs-center">
                     <v-btn
                       primary
-                      flat
+                      :loading="submitLoading"
+                      :disabled="submitLoading"
                       type="submit"
                       @click="submit">
                       Create Event
@@ -147,6 +148,9 @@
           date.setMinutes(minutes)
         }
         return date
+      },
+      submitLoading () {
+        return this.$store.getters.submitLoading
       }
     },
     methods: {

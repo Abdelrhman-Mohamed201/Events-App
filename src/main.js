@@ -9,6 +9,7 @@ import VeeValidate from 'vee-validate'
 import * as firebase from 'firebase'
 import 'vuetify/dist/vuetify.min.css'
 import colors from 'vuetify/es5/util/colors'
+import './stylus/main.styl'
 import DateFilter from './filters/date'
 import alertComp from './components/shared/Alert'
 
@@ -32,7 +33,7 @@ new Vue({
   store,
   components: { App },
   template: '<App/>',
-  created () {
+  beforeCreate () {
     firebase.initializeApp({
       apiKey: 'AIzaSyAfssZjEeIuQ8WdV4Cg-S5bDSFJDyjCwAM',
       authDomain: 'events-app-adc97.firebaseapp.com',
@@ -40,5 +41,11 @@ new Vue({
       projectId: 'events-app-adc97',
       storageBucket: ''
     })
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.$store.dispatch('autoSignIn', user)
+      }
+    })
+    this.$store.dispatch('loadEvents')
   }
 })

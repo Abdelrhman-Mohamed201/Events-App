@@ -1,16 +1,58 @@
 import * as firebase from 'firebase'
 
 export default {
-  createEvent ({commit}, payload) {
+  loadEvents ({commit}) {
+    commit('loading', true)
+    firebase.database().ref('events').once('value')
+      .then(
+        data => {
+          const events = []
+          const obj = data.val()
+          for (let key in obj) {
+            events.push({
+              id: key,
+              title: obj[key].title,
+              location: obj[key].location,
+              imgUrl: obj[key].imgUrl,
+              description: obj[key].description,
+              date: obj[key].date,
+              creatorId: obj[key].creatorId
+            })
+          }
+          commit('setLoadedEvents', events)
+          commit('loading', false)
+        }
+      )
+      .catch(
+        error => {
+          console.log(error)
+          commit('loading', false)
+        }
+      )
+  },
+  createEvent ({commit, getters}, payload) {
     const event = {
       title: payload.title,
       location: payload.location,
       imgUrl: payload.imgUrl,
       description: payload.description,
-      date: payload.date,
-      id: 'dasd465asd'
+      date: payload.date.toISOString(),
+      creatorId: getters.user.id
     }
-    commit('createEvent', event)
+    firebase.database().ref('events').push(event)
+      .then(
+        data => {
+          commit('createEvent', {
+            ...event,
+            id: data.key
+          })
+        }
+      )
+      .catch(
+        error => {
+          console.log(error)
+        }
+      )
   },
   clearAlert ({commit}) {
     commit('clearAlert')
@@ -58,5 +100,12 @@ export default {
           commit('setAlert', {type: 'error', icon: 'warning', message: error.message})
         }
       )
+  },
+  autoSignIn ({commit}, payload) {
+    commit('setUser', {id: payload.uid, registeredEvents: []})
+  },
+  logout ({commit}) {
+    firebase.auth().signOut()
+    commit('setUser', null)
   }
 }

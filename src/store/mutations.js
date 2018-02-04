@@ -1,4 +1,7 @@
 export default {
+  setLoadedEvents (state, payload) {
+    state.events.loadedEvents = payload
+  },
   createEvent (state, payload) {
     state.events.loadedEvents.push(payload)
   },
@@ -13,5 +16,8 @@ export default {
   },
   submitLoading (state, payload) {
     state.submitLoading = payload
+  },
+  loading (state, payload) {
+    state.loading = payload
   }
 }
