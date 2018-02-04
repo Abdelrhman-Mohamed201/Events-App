@@ -151,7 +151,6 @@
     },
     methods: {
       submit () {
-        console.log(this.$validator)
         this.$validator.validateAll()
       },
       clear () {

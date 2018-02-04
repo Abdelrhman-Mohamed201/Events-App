@@ -13,5 +13,14 @@ export default {
         return event.id === eventId
       })
     }
+  },
+  user (state) {
+    return state.user
+  },
+  submitLoading (state) {
+    return state.submitLoading
+  },
+  alert (state) {
+    return state.alert
   }
 }

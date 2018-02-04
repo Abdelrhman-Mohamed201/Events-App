@@ -5,9 +5,12 @@ import App from './App'
 import router from './router'
 import { store } from './store'
 import Vuetify from 'vuetify'
+import VeeValidate from 'vee-validate'
+import * as firebase from 'firebase'
 import 'vuetify/dist/vuetify.min.css'
 import colors from 'vuetify/es5/util/colors'
 import DateFilter from './filters/date'
+import alertComp from './components/shared/Alert'
 
 Vue.use(Vuetify, {
   theme: {
@@ -15,7 +18,9 @@ Vue.use(Vuetify, {
   }
 })
 
-Vue.use(Vuetify)
+Vue.component('app-alert', alertComp)
+
+Vue.use(VeeValidate)
 Vue.filter('date', DateFilter)
 
 Vue.config.productionTip = false
@@ -26,5 +31,14 @@ new Vue({
   router,
   store,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+  created () {
+    firebase.initializeApp({
+      apiKey: 'AIzaSyAfssZjEeIuQ8WdV4Cg-S5bDSFJDyjCwAM',
+      authDomain: 'events-app-adc97.firebaseapp.com',
+      databaseURL: 'https://events-app-adc97.firebaseio.com',
+      projectId: 'events-app-adc97',
+      storageBucket: ''
+    })
+  }
 })
